@@ -1,21 +1,27 @@
-import os
+#!/usr/bin/env python3
+
 import datetime
+import os
+
 from pypdf import PdfWriter
 
 default_directory = os.getcwd()
 default_time = datetime.datetime.now()
 
+
 def set_working_directory(directory):
     os.chdir(directory)
+
 
 def merge_pdfs(merged_name, pdfs, directory):
     os.chdir(directory)
     merger = PdfWriter()
     for pdf in pdfs:
-        merger.append(pdf + '.pdf')
-    merger.write(merged_name + '.pdf')
+        merger.append(pdf + ".pdf")
+    merger.write(merged_name + ".pdf")
     merger.close()
     os.chdir(default_directory)
+
 
 merged_name = "merged_pdf"
 pdfs = ["pdf1", "pdf2"]
